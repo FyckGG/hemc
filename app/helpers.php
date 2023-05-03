@@ -24,7 +24,7 @@ if (!function_exists('get_current_routes')) {
             }
         }
        $currentRoutes = array_reverse($currentRoutes);
-        //dd($currentRoutes);
+//        dump($currentRoutes);
         return $currentRoutes;
     }
 }
