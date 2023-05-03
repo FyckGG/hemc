@@ -7,7 +7,7 @@
     @foreach ($types as $type)
         <div class="col-12 col-md-4">
 {{--            <x-product.product-card :type="$type" ></x-product.product-card>--}}
-            <x-product.product-card :ref="$type->id"
+            <x-product.product-card :ref="$type->type_name"
                                     :img_src="$type->path_to_directory"
                                     :name="$type->type_name"></x-product.product-card>
         </div>
@@ -16,7 +16,7 @@
         @if(!empty($products))
             @foreach($products as $product)
                 <div class="col-12 col-md-4">
-                    <x-product.product-card ref="product/{{$product->id}}"
+                    <x-product.product-card ref="product/{{$product->product_name}}"
                                             :img_src="$product->path_to_directory"
                                             :name="$product->product_name"></x-product.product-card>
                 </div>
