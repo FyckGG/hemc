@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MailController;
 
@@ -16,9 +16,11 @@ use App\Http\Controllers\MailController;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
+//Route::prefix('admin')->as('admin')->group(function() {
+//    Route::get('/', [AdminController::class, 'index'])->name('index');
+//    Route::get('/products', [AdminController::class, 'productIndex'])->name('productIndex');
 //});
+
 Route::view('/', 'main.index')->name('main');
 Route::view('/about-us', 'about-us.index')->name('about-us');
 Route::view('/contacts', 'contacts.index')->name('contacts');
@@ -32,10 +34,12 @@ Route::prefix('products')->as('products')->group(function() {
     Route::get('/', [ProductController::class, 'index'])->name(''); // на этой странице получаем типы
     Route::get('/{category}', [ProductController::class, 'category'])->name('.category')->
     where('category', '^(?!.*/product).*$')->
-     name('.category')->middleware('readableCategory');
+//     name('.category')->middleware('readableCategory');
+    name('.category');
     Route::get('/{category}/{item}', [ProductController::class, 'item'])->
     where('category', '.*/product')->
-    name('.item')->middleware('readableCategory','readableProduct'); // здесь конкретный ите
+//    name('.item')->middleware('readableCategory','readableProduct'); // здесь конкретный ите
+    name('.item'); // здесь конкретный ите
 
 });
 
