@@ -15,11 +15,8 @@ return new class extends Migration
     {
         Schema::create('product_types', function (Blueprint $table) {
             $table->id();
-            //$table->timestamps();
-            $table->string('type_name');
-           //$table->foreignId('types_relationship_id')->constrained();
+            $table->string('type_name')->unique();
             $table->foreignId('image_id')->constrained();
-            //$table->foreignId('user_id')->constrained();
         });
     }
 
