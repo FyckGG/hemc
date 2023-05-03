@@ -24,7 +24,7 @@ class MailController extends Controller
                 'object_location'=>['nullable', 'string', 'max:50']]);
             //dd($validated);
 
-            Mail::to('mistertwister698@gmail.com')->send(new SendQuestionMail($request->sender_email,
+            Mail::to(env("MAIL_USERNAME"))->send(new SendQuestionMail($request->sender_email,
                 $request->sender_name,
                 $request->sender_message,
                 $request->sender_phone_number,
@@ -58,8 +58,8 @@ public function sendOrderMail (Request $request) {
                 'sender_phone_number' => ['nullable', new PhoneNumber],
                 'object_location'=>['nullable', 'string', 'max:50']]);
 
-            Mail::to('mistertwister698@gmail.com')->send(new SendOrderMail($request->product_name,
-                $request->sender_name,
+            Mail::to(env("MAIL_USERNAME"))->send(new SendOrderMail($request->product_name,
+            $request->sender_name,
                 $request->sender_email,
                 $request->sender_message,
                 $request->sender_phone_number,
@@ -73,7 +73,6 @@ public function sendOrderMail (Request $request) {
                 $readable_names = get_readable_form_errors(array_keys($e->validator->failed()));
                 alert($readable_names, 'danger');
                 return back();
-                //return redirect()->getUrlGenerator()->previous();
             }
             else {
                 return redirect()->route('main');
