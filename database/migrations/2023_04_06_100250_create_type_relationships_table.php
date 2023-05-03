@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('type_relationships', function (Blueprint $table) {
             $table->id();
-            //$table->timestamps();
             $table->foreignId('product_type_id')->constrained();
         });
     }

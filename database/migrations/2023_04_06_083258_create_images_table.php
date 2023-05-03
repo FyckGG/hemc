@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            //$table->timestamps();
             $table->string('img_name')->default('img');
-            //$table->string('path_to_directory');
-            $table->string('path_to_directory')->
+            $table->text('path_to_directory')->
             default('storage/default-imgs/default-product-photo.png'); ///!!!!!!!!!!!!!
         });
     }

@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('product_details', function (Blueprint $table) {
             $table->id();
-            //$table->timestamps();
             $table->foreignId('product_id')->constrained();
-            $table->text('product_description')->nullable();
-            $table->text('product_characteristics')->nullable();
-            $table->text('product_terms_of_purchase')->nullable();
+            $table->longText('product_description')->nullable();
+            $table->longText('product_characteristics')->nullable();
+            $table->longText('product_terms_of_purchase')->nullable();
 
         });
     }
